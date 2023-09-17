@@ -1,21 +1,38 @@
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash >>/tmp/backend.log
-cp backend.service /etc/systemd/system/backend.service >>/tmp/backend.log
+source common.sh
 
-dnf install nodejs -y >>/tmp/backend.log
+echo Installation of NodeJS Repos
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash >>$log_file
 
-useradd expense >>/tmp/backend.log
-rm -rf /app >>/tmp/backend.log
-mkdir /app >>/tmp/backend.log
+echo Copy Backend Service File
+cp backend.service /etc/systemd/system/backend.service >>$log_file
 
-curl -s -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip >>/tmp/backend.log
-cd /app >>/tmp/backend.log
-unzip /tmp/backend.zip >>/tmp/backend.log
+echo Install NodeJS
+dnf install nodejs -y >>$log_file
 
-npm install >>/tmp/backend.log
+echo Add Application User
+useradd expense >>$log_file
 
-systemctl daemon-reload >>/tmp/backend.log
-systemctl enable backend >>/tmp/backend.log
-systemctl start backend >>/tmp/backend.log
+echo Clean App Files
+rm -rf /app >>$log_file
+mkdir /app >>$log_file
 
-dnf install mysql -y >>/tmp/backend.log
-mysql -h mysql.mydevops75.online -uroot -pExpenseApp@1 < /app/schema/backend.sql >>/tmp/backend.log
+echo Download App Files
+curl -s -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip >>$log_file
+cd /app
+
+echo Extract App Files
+unzip /tmp/backend.zip >>$log_file
+
+echo Download Dependencies for App
+npm install >>$log_file
+
+echo Start Backend Service Application
+systemctl daemon-reload >>$log_file
+systemctl enable backend >>$log_file
+systemctl start backend >>$log_file
+
+echo Install MySQL Client Application
+dnf install mysql -y >>$log_file
+
+echo Load Schema to MySQL
+mysql -h mysql.mydevops75.online -uroot -pExpenseApp@1 < /app/schema/backend.sql >>$log_file
