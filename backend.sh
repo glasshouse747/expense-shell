@@ -3,11 +3,11 @@ source common.sh
 echo Installation of NodeJS Repos
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
 
-echo Copy Backend Service File
-cp backend.service /etc/systemd/system/backend.service &>>$log_file
-
 echo Install NodeJS
 dnf install nodejs -y &>>$log_file
+
+echo Copy Backend Service File
+cp backend.service /etc/systemd/system/backend.service &>>$log_file
 
 echo Add Application User
 useradd expense &>>$log_file
