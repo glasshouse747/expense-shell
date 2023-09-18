@@ -52,7 +52,11 @@ fi
 
 echo Extract App Files
 unzip /tmp/backend.zip &>>$log_file
-echo $?
+if [ $? -eq 0 ]; then
+  echo SUCCESS
+else
+  echo FAILED
+fi
 
 echo Download Dependencies for App
 npm install &>>$log_file

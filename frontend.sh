@@ -26,11 +26,6 @@ else
 fi
 
 cd /usr/share/nginx/html &>>$log_file
-if [ $? -eq 0 ]; then
-  echo SUCCESS
-else
-  echo FAILED
-fi
 
 download_and_extract
 if [ $? -eq 0 ]; then
