@@ -52,5 +52,6 @@ dnf install mysql -y &>>$log_file
 status_check
 
 echo Load Schema to MySQL
-mysql -h mysql.mydevops75.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
+mysql_root_password=$1
+mysql -h mysql.mydevops75.online -uroot -p$mysql_root_password < /app/schema/backend.sql &>>$log_file
 status_check
