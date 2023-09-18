@@ -2,11 +2,12 @@ source common.sh
 
 echo Installation of NodeJS Repos
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$log_file
-  if [ $? -eq 0 ]; then
-    echo -e "\e[32mSUCCESS\e[0m"
-  else
-   echo -e "\e[31mFAILED\e[0m"
-  fi
+if [ $? -eq 0 ]; then
+  echo -e "\e[32mSUCCESS\e[0m"
+else
+  echo -e "\e[31mFAILED\e[0m"
+  exit
+fi
 
 echo Install NodeJS
 dnf install nodejs -y &>>$log_file
@@ -14,6 +15,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
+  exit
 fi
 
 echo Copy Backend Service File
@@ -22,15 +24,17 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
+  exit
 fi
 
 echo Add Application User
 useradd expense &>>$log_file
-  if [ $? -eq 0 ]; then
-    echo -e "\e[32mSUCCESS\e[0m"
-  else
-   echo -e "\e[31mFAILED\e[0m"
-  fi
+if [ $? -eq 0 ]; then
+  echo -e "\e[32mSUCCESS\e[0m"
+else
+  echo -e "\e[31mFAILED\e[0m"
+  exit
+fi
 
 echo Clean App Files
 rm -rf /app &>>$log_file
@@ -39,6 +43,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
+  exit
 fi
 
 echo Download App Files
@@ -48,6 +53,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
+  exit
 fi
 
 echo Extract App Files
@@ -56,6 +62,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
+  exit
 fi
 
 echo Download Dependencies for App
@@ -64,6 +71,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
+  exit
 fi
 
 echo Start Backend Service Application
@@ -74,6 +82,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
+  exit
 fi
 
 echo Install MySQL Client Application
@@ -82,6 +91,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
+  exit
 fi
 
 echo Load Schema to MySQL
@@ -90,4 +100,5 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
+  exit
 fi
