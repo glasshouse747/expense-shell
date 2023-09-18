@@ -7,7 +7,7 @@ download_and_extract(){
 if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
-  echo -e "e\[31mFAILED\e[0m"
+  echo -e "\e[31mFAILED\e[0m"
 fi
 
   echo Extracting Frontend Code
@@ -15,7 +15,7 @@ fi
 if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
-  echo -e "e\[31mFAILED\e[0m"
+  echo -e "\e[31mFAILED\e[0m"
 fi
 
 }
