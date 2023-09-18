@@ -6,7 +6,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Install NodeJS
@@ -15,7 +15,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Copy Backend Service File
@@ -24,7 +24,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Add Application User
@@ -33,7 +33,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Clean App Files
@@ -43,7 +43,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Download App Files
@@ -53,7 +53,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Extract App Files
@@ -62,7 +62,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Download Dependencies for App
@@ -71,7 +71,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Start Backend Service Application
@@ -82,7 +82,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Install MySQL Client Application
@@ -91,7 +91,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Load Schema to MySQL
@@ -100,5 +100,5 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi

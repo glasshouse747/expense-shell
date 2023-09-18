@@ -6,7 +6,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Copy MySQL Repo Files
@@ -15,7 +15,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Install MySQL Client Server
@@ -24,7 +24,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Start MySQL Client Server
@@ -34,7 +34,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
 
 echo Setup root Password for MySQL Client Server
@@ -43,5 +43,5 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILED\e[0m"
-  exit
+  exit 1
 fi
